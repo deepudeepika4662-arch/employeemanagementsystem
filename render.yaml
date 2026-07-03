@@ -8,6 +8,12 @@ services:
     envVars:
       - key: DJANGO_SECRET_KEY
         value: "replace-me-with-a-secure-key"
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "replace-me-with-username"
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "replace-me-with-email@example.com"
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: "replace-me-with-password"
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
