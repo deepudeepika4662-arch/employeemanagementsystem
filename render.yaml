@@ -4,7 +4,7 @@ services:
     env: python
     plan: starter
     buildCommand: python3 -m pip install -r requirements.txt
-    startCommand: python3 -m gunicorn employee_management.wsgi:application --log-file -
+    startCommand: python3 -m gunicorn employee_management.wsgi:application --bind 0.0.0.0:$PORT --log-file -
     envVars:
       - key: DJANGO_SECRET_KEY
         value: "replace-me-with-a-secure-key"
