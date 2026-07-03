@@ -1,0 +1,18 @@
+{% extends 'employees/base.html' %}
+{% block content %}
+<div class="form-card mx-auto" style="max-width: 700px;">
+  <div class="mb-4">
+    <h3 class="mb-1">{{ title }}</h3>
+    <p class="text-muted">Complete the form to save employee details.</p>
+  </div>
+  <form method="post">{% csrf_token %}
+    <div class="row g-3">
+      {{ form.as_p }}
+    </div>
+    <div class="mt-4 d-flex gap-2 flex-wrap">
+      <button class="btn btn-primary" type="submit">Save changes</button>
+      <a class="btn btn-outline-secondary" href="{% url 'employees:list' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

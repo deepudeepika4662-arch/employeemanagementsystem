@@ -1,0 +1,44 @@
+{% extends 'employees/base.html' %}
+{% block content %}
+<div class="hero mb-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="display-5 fw-bold">Employee Management Portal</h1>
+      <p class="lead">Build on Django and default SQLite, this interface delivers employee CRUD, search, and admin control in one professional app.</p>
+      <div class="mt-4 d-flex flex-wrap gap-2">
+        {% if user.is_authenticated %}
+          <a class="btn btn-lg gradient-btn text-white" href="{% url 'employees:list' %}">Employee List</a>
+          <a class="btn btn-lg btn-outline-light" href="{% url 'employees:add' %}">Add Employee</a>
+          <a class="btn btn-lg btn-outline-light" href="{% url 'employees:cbv' %}">CBV List</a>
+          {% if user.is_staff or user.is_superuser %}
+            <a class="btn btn-lg btn-warning" href="{% url 'admin:index' %}">Admin Panel</a>
+          {% endif %}
+        {% else %}
+          <a class="btn btn-lg gradient-btn text-white" href="{% url 'employees:login' %}">Login</a>
+          <a class="btn btn-lg btn-outline-light" href="{% url 'employees:register' %}">Register</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="feature-card p-4 h-100">
+      <h5 class="mb-3">Employee CRUD</h5>
+      <p>Perform add, view, edit, and delete operations for employee records with role-based access.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card p-4 h-100">
+      <h5 class="mb-3">Search & filters</h5>
+      <p>Search employee records by name, email, or department in both function-based and class-based views.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card p-4 h-100">
+      <h5 class="mb-3">Admin controls</h5>
+      <p>Staff users can manage all employees and access the Django admin panel for advanced configuration.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'employees/base.html' %}
+{% block content %}
+<div class="table-card mx-auto" style="max-width: 760px;">
+  <div class="d-flex justify-content-between align-items-start mb-3">
+    <div>
+      <h3>Employee Detail</h3>
+      <p class="text-muted">Review full information for this employee record.</p>
+    </div>
+    <a class="btn btn-outline-secondary" href="{% url 'employees:list' %}">Back to list</a>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="p-4 bg-light rounded-3">
+        <h5 class="mb-2">{{ employee.full_name }}</h5>
+        <p class="mb-1"><strong>Employee ID:</strong> {{ employee.employee_id }}</p>
+        <p class="mb-1"><strong>Email:</strong> {{ employee.email }}</p>
+        <p class="mb-1"><strong>Department:</strong> {{ employee.department }}</p>
+        <p class="mb-0"><strong>Age:</strong> {{ employee.age }}</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-4 bg-white rounded-3 border">
+        <h6 class="mb-3">Record ownership</h6>
+        <p><strong>Created by:</strong>
+          {% if employee.created_by %}
+            {{ employee.created_by.username }}
+          {% else %}
+            N/A
+          {% endif %}
+        </p>
+        <p><strong>Linked user:</strong>
+          {% if employee.user %}
+            {{ employee.user.username }}
+          {% else %}
+            None
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 d-flex gap-2">
+    <a class="btn btn-primary" href="{% url 'employees:edit' employee.pk %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'employees:delete' employee.pk %}">Delete</a>
+  </div>
+</div>
+{% endblock %}

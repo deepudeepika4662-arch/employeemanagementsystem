@@ -1,0 +1,1 @@
+Place static files (CSS/JS/images) here if needed. Bootstrap is used via CDN in templates.
